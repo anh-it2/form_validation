@@ -10,7 +10,7 @@ var isUserName = false
 var isEmail = false
 var isPassword = false
 var isCfPassword = false
-var isAgree = false
+var isAgree = true
 
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
@@ -20,15 +20,23 @@ username.addEventListener('keyup',checkUserName)
 email.addEventListener('keyup',checkEmail)
 password.addEventListener('keyup',checkPassword)
 cfPassword.addEventListener('blur',checkCfPassword)
+
 function submitForm(){
 
     checkUserName()
     checkEmail()
     checkPassword()
     checkCfPassword()
-    
     if(!agree.checked){
-        setError(agree,'User name should be min 3 characters')
+        const parent = agree.parentElement
+        const small = parent.querySelector('small')
+        small.style.visibility = 'visible'
+        isAgree = false
+    } else{
+        const parent = agree.parentElement
+        const small = parent.querySelector('small')
+        small.style.visibility = 'hidden'
+        isAgree = true
     }
     if(isUserName && isEmail && isPassword && isCfPassword && isAgree){
         form.submit()

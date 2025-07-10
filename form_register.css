@@ -83,3 +83,13 @@ small{
     visibility: visible;
     font-size: 12px;
 }
+.submit{
+    width: 500px;
+}
+.agree{
+    position: relative
+}
+.checkbox-error{
+    visibility: hidden;
+    color: red;
+}
